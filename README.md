@@ -1,4 +1,4 @@
-<!-- ### json-server (mock)
+### json-server (mock)
 
 # 增
 POST
@@ -9,4 +9,4 @@ PUT
 # 查
 GET
 # 改某一个属性
-PATCH -->
+PATCH
