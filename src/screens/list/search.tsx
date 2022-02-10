@@ -1,4 +1,20 @@
-export const Search = ({users, param, setParam}) => {
+import React from 'react'
+
+interface User {
+    id: string,
+    name: string
+}
+
+interface SearchProps {
+    users: User[],
+    param: {
+        id: string,
+        projectName: string
+    },
+    setParam: (param: SearchProps['param']) => void
+}
+
+export const Search = ({users, param, setParam}: SearchProps) => {
     return (
         <div>
             <dl>

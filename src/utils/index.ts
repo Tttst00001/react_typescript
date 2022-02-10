@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 
-const isFalsy = (value) => (value === 0 ? false : !value);
+const isFalsy = (value: any) => (value === 0 ? false : !value);
 
 // 清理value为空的属性
-const cleanObject = (obj) => {
-  const result = { ...obj };
+const cleanObject = (obj: object) => {
+  const result: object = { ...obj };
   Object.keys(result).forEach((key) => {
+    // @ts-ignore
     const value = result[key];
     if (isFalsy(value)) {
+      // @ts-ignore
       delete result[key];
     }
   });
@@ -15,14 +17,15 @@ const cleanObject = (obj) => {
 };
 
 // 自定义hook
-const useMount = (callback) => {
+const useMount = (callback: () => void) => {
   useEffect(() => {
     callback();
   }, []);
 };
 
 // 防抖
-const useDebounce = (value, delay) => {
+
+const useDebounce = <Q>(value: Q, delay?: number) => {
   const [debounceValue, setDebounceValue] = useState(value);
   useEffect(() => {
     const time = setTimeout(() => setDebounceValue(value), delay);
