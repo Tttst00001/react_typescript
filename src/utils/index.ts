@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+const apiUrl = process.env.REACT_APP_API_URL
 
 const isFalsy = (value: any) => (value === 0 ? false : !value);
 
@@ -24,7 +25,6 @@ const useMount = (callback: () => void) => {
 };
 
 // 防抖
-
 const useDebounce = <Q>(value: Q, delay?: number) => {
   const [debounceValue, setDebounceValue] = useState(value);
   useEffect(() => {
@@ -34,4 +34,17 @@ const useDebounce = <Q>(value: Q, delay?: number) => {
   return debounceValue;
 };
 
-export { cleanObject, useMount, useDebounce };
+const useArray = <V>(initialProps: V[])  => {
+  const [value, setValue] = useState(initialProps)
+  return {
+    value,
+    setValue,
+    add: (item: V) => {
+      setValue([...value, item])
+    },
+    clear: () => {},
+    del: () => {}
+  }
+}
+
+export { cleanObject, useMount, useDebounce, useArray }
