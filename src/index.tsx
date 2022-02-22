@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 // import { ListHome } from './screens/list/index'
-import { Login } from 'login';
+import { Login } from './login';
 import reportWebVitals from './reportWebVitals';
 import 'antd/dist/antd.css'
 
