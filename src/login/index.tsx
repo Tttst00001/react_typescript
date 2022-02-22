@@ -1,32 +1,50 @@
-import { type } from "os"
-import React, { useEffect, useState } from "react"
-import http from "utils/http"
-import { useMount } from '../utils/index'
+import React from "react"
+import { Form, Input, Button, Checkbox } from 'antd';
+import { User } from '../common/index'
+import { login } from './api'
+import './index.css'
+
 export const Login = () => {
-  const [user, setUser] = useState({
-    user: "",
-    password: ""
-  })
-  
-  const login = async () => {
-    let res = await http.get('users', user)
-    console.log(res)
-    
-  }
+  const onFinish = async (values: User) => {
+    let res = await login(values)
+    console.log('Success:', res);
+  };
+
+  const onFinishFailed = (errorInfo:any) => {
+    console.log('Failed:', errorInfo);
+  };
 
   return (
-    <div>
-      <dl>
-        <dt>用户名: <input type="text" onChange={(e) => setUser({
-          ...user, 
-          user: e.target.value
-        })} /></dt>
-        <dd>密码: <input type="password" onChange={(e) => setUser({
-          ...user, 
-          password: e.target.value
-        })} /></dd>
-      </dl>
-      <p onClick={() => login()}>登录</p>
+    <div className="login">
+      <Form name="basic" labelCol={{span: 8}} wrapperCol={{span: 16}} initialValues={{remember: true}} onFinish={onFinish} onFinishFailed={onFinishFailed} autoComplete="off">
+      <Form.Item label="Username" name="username"
+        rules={[
+          {
+            required: true,
+            message: 'Please input your username!',
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+
+      <Form.Item
+        label="Password"
+        name="password"
+        rules={[
+          {
+            required: true,
+            message: 'Please input your password!',
+          },
+        ]}
+      >
+        <Input.Password />
+      </Form.Item>
+
+      <Form.Item wrapperCol={{offset: 8,span: 16,}}>
+        <Button type="primary" htmlType="submit">Submit</Button>
+      </Form.Item>
+    </Form>
     </div>
   )
 }

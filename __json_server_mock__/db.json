@@ -1,41 +1,9 @@
 {
-  "users": [
-    {
-      "id": 0,
-      "name": "高秀文"
-    },
+  "login": [
     {
       "id": 1,
-      "name": "熊天明"
-    },
-    {
-      "id": 2,
-      "name": "王文杰"
-    },
-    {
-      "name": "dudu",
-      "password": "111111",
-      "id": 3
-    }
-  ],
-  "list": [
-    {
-      "id": 1,
-      "department": "A",
-      "projectName": "0001",
-      "name": "熊天明"
-    },
-    {
-      "id": 2,
-      "department": "B",
-      "projectName": "0002",
-      "name": "王文杰"
-    },
-    {
-      "id": 0,
-      "department": "C",
-      "projectName": "0003",
-      "name": "高秀文"
+      "username": "tom",
+      "password": "123456"
     }
   ]
 }
